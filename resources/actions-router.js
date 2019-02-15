@@ -56,5 +56,39 @@ router.post('/', (req, res) => {
     }
 })
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id;
+    db.remove(id)
+    .then(item => {
+        if (item === 0) {
+            res.status(404).json({error: "No such action id."})
+        } else{
+            res.status(200).json({message: "Successfully deleted action."})
+        }    
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json("error: The request failed.")
+    })
+})
+
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const action = req.body;
+    if (!req.body.project_id || !req.body.description || !req.body.notes) {
+        res.status(500).json({error: "Please include a name and description."})
+    } else {
+        db.update(id, action)
+            .then(response => {
+                console.log(response);
+                res.status(200).json(response)
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({error: "Problem encountered while edited database!"})
+            })
+    }
+})
+
 
 module.exports = router;
