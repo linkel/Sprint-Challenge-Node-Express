@@ -1,0 +1,25 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.project {
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 4px rgb(128, 137, 172);
+    transition: 0.1s ease-in-out
+}
+
+.project:hover {
+    box-shadow: 0 0 0 rgb(128, 137, 172);
+}
+
+.nav-item {
+    padding: 40px;
+    margin: 20px;
+    background-color: white;
+    border-radius: 3px;
+    font-size: 2.2rem;
+    color: black;
+}
