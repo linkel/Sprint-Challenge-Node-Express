@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+I learned about Express's routing functionality and writing middleware for it.
+
 - [ ] Describe Middleware?
+
+Middleware is any software that goes between the server code and the execution. You can use middleware to add functionality to programs because the main code will execute and pass what it has along to the middleware, and the middleware will perform an operation on those inputs and then pass them along to the output. 
 
 - [ ] Describe a Resource?
 
+A resource is any piece or set of information, like a list of users or social security numbers. This is usually requested or edited by means of interfacing with the API.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+It can return an HTTP status code, like 200 or 201. 
+
 - [ ] How can we partition our application into sub-applications?
+
+We can separate it into individual files that are organized by the logic of each file's functionality. So the server could handle just the server being initialized and import information from an index file, which could branch out to different files per resource.
 
 ## Project Setup
 
