@@ -3,7 +3,10 @@ import {Box, Button, Collapsible, Heading, Grommet, Layer, ResponsiveContext} fr
 import {FormClose, Notification} from 'grommet-icons';
 import {Route} from 'react-router-dom';
 import Projects from './Projects';
+import ProjectDetail from "./ProjectDetail";
 import axios from 'axios'
+import {Link} from 'react-router-dom';
+import './App.css';
 
 const theme = {
   global: {
@@ -49,7 +52,7 @@ class App extends Component {
         {size => (
           <Box fill>
           <AppBar>
-          <Heading level='3' margin='none'>Projects and Actions</Heading>
+          <Link exact to="/"><Heading level='3' margin='none'>Projects and Actions</Heading></Link>
           <Button icon={<Notification />} onClick={() => {
             console.log(this.state)
             this.setState(prevState => ({ showSidebar: !prevState.showSidebar}))
@@ -57,14 +60,16 @@ class App extends Component {
         </AppBar>
         <Box direction='row' flex overflow={{ horizontal: 'hidden'}}>
           <Box flex align='center' justify='center'>
-            <Route exact path='/' component={Projects}/>
+            <Route exact path='/' render={(props) => <Projects projects={this.state.projects} {...props}/>}/>
+            <Route path="/:id" render={(props) => <ProjectDetail {...props}/>} />
 
           </Box>
           {(!showSidebar || size !== 'small') ? (
               <Collapsible direction="horizontal" open={showSidebar}>
                 <Box flex width="medium" background='light-2' elevation='small'
                   align='center' justify='center'>
-                    sidebar
+                    <div className="nav-item">Add Project</div>
+                    <div className="nav-item">Edit Project</div>
                 </Box>
               </Collapsible>
               
